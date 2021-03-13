@@ -3,19 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4641408B25F8E75E00649126 /* TickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4641408A25F8E75E00649126 /* TickerHeaderView.swift */; };
 		4662DEC625F6444900520DA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662DEC525F6444900520DA5 /* AppDelegate.swift */; };
 		4662DEC825F6444900520DA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662DEC725F6444900520DA5 /* SceneDelegate.swift */; };
 		4662DECA25F6444900520DA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662DEC925F6444900520DA5 /* ViewController.swift */; };
 		4662DECD25F6444900520DA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4662DECB25F6444900520DA5 /* Main.storyboard */; };
 		4662DECF25F6444C00520DA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4662DECE25F6444C00520DA5 /* Assets.xcassets */; };
 		4662DED225F6444C00520DA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4662DED025F6444C00520DA5 /* LaunchScreen.storyboard */; };
+		4662DEDB25F6453900520DA5 /* TickersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662DEDA25F6453900520DA5 /* TickersTableViewController.swift */; };
+		4662DEDE25F646A100520DA5 /* Tickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662DEDD25F646A100520DA5 /* Tickers.swift */; };
+		4662DEE125F64E9C00520DA5 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662DEE025F64E9C00520DA5 /* APIClient.swift */; };
+		4662DEF325F8AD8000520DA5 /* TickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662DEF225F8AD8000520DA5 /* TickerCell.swift */; };
+		AA488322F8DA1FD9A1A8F46E /* Pods_TickersPoloniex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E861E2D4FAD720F5D7A8645 /* Pods_TickersPoloniex.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4641408A25F8E75E00649126 /* TickerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerHeaderView.swift; sourceTree = "<group>"; };
 		4662DEC225F6444900520DA5 /* TickersPoloniex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TickersPoloniex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4662DEC525F6444900520DA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4662DEC725F6444900520DA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +31,13 @@
 		4662DECE25F6444C00520DA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4662DED125F6444C00520DA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4662DED325F6444C00520DA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4662DEDA25F6453900520DA5 /* TickersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickersTableViewController.swift; sourceTree = "<group>"; };
+		4662DEDD25F646A100520DA5 /* Tickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tickers.swift; sourceTree = "<group>"; };
+		4662DEE025F64E9C00520DA5 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		4662DEF225F8AD8000520DA5 /* TickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerCell.swift; sourceTree = "<group>"; };
+		9E861E2D4FAD720F5D7A8645 /* Pods_TickersPoloniex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TickersPoloniex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5AA421A449F10C89CD89652 /* Pods-TickersPoloniex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TickersPoloniex.release.xcconfig"; path = "Target Support Files/Pods-TickersPoloniex/Pods-TickersPoloniex.release.xcconfig"; sourceTree = "<group>"; };
+		B03897123B387DAAB1945B7B /* Pods-TickersPoloniex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TickersPoloniex.debug.xcconfig"; path = "Target Support Files/Pods-TickersPoloniex/Pods-TickersPoloniex.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +45,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA488322F8DA1FD9A1A8F46E /* Pods_TickersPoloniex.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4641408D25FA387900649126 /*  Models */ = {
+			isa = PBXGroup;
+			children = (
+				4662DEDD25F646A100520DA5 /* Tickers.swift */,
+			);
+			path = " Models";
+			sourceTree = "<group>";
+		};
+		4641408E25FA38B100649126 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4641408A25F8E75E00649126 /* TickerHeaderView.swift */,
+				4662DEF225F8AD8000520DA5 /* TickerCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4641408F25FA38CB00649126 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4662DEDA25F6453900520DA5 /* TickersTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		4662DEB925F6444900520DA5 = {
 			isa = PBXGroup;
 			children = (
 				4662DEC425F6444900520DA5 /* TickersPoloniex */,
 				4662DEC325F6444900520DA5 /* Products */,
+				F1A0690CC3E17D0BF0148C97 /* Pods */,
+				CD83F5B7A4DD08B1D58A8FD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +100,42 @@
 			children = (
 				4662DEC525F6444900520DA5 /* AppDelegate.swift */,
 				4662DEC725F6444900520DA5 /* SceneDelegate.swift */,
-				4662DEC925F6444900520DA5 /* ViewController.swift */,
-				4662DECB25F6444900520DA5 /* Main.storyboard */,
+				4662DEE325F64EA400520DA5 /* Network */,
+				4641408D25FA387900649126 /*  Models */,
+				4641408E25FA38B100649126 /* Views */,
+				4641408F25FA38CB00649126 /* Controllers */,
 				4662DECE25F6444C00520DA5 /* Assets.xcassets */,
+				4662DEC925F6444900520DA5 /* ViewController.swift */,
 				4662DED025F6444C00520DA5 /* LaunchScreen.storyboard */,
+				4662DECB25F6444900520DA5 /* Main.storyboard */,
 				4662DED325F6444C00520DA5 /* Info.plist */,
 			);
 			path = TickersPoloniex;
+			sourceTree = "<group>";
+		};
+		4662DEE325F64EA400520DA5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4662DEE025F64E9C00520DA5 /* APIClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CD83F5B7A4DD08B1D58A8FD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E861E2D4FAD720F5D7A8645 /* Pods_TickersPoloniex.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1A0690CC3E17D0BF0148C97 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B03897123B387DAAB1945B7B /* Pods-TickersPoloniex.debug.xcconfig */,
+				A5AA421A449F10C89CD89652 /* Pods-TickersPoloniex.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4662DED625F6444C00520DA5 /* Build configuration list for PBXNativeTarget "TickersPoloniex" */;
 			buildPhases = (
+				ACFA126B87A92EFE13B9D6D0 /* [CP] Check Pods Manifest.lock */,
 				4662DEBE25F6444900520DA5 /* Sources */,
 				4662DEBF25F6444900520DA5 /* Frameworks */,
 				4662DEC025F6444900520DA5 /* Resources */,
+				05D3D4C6AA0BB8516C231555 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,14 +205,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		05D3D4C6AA0BB8516C231555 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TickersPoloniex/Pods-TickersPoloniex-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TickersPoloniex/Pods-TickersPoloniex-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TickersPoloniex/Pods-TickersPoloniex-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACFA126B87A92EFE13B9D6D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TickersPoloniex-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4662DEBE25F6444900520DA5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4662DEDE25F646A100520DA5 /* Tickers.swift in Sources */,
 				4662DECA25F6444900520DA5 /* ViewController.swift in Sources */,
 				4662DEC625F6444900520DA5 /* AppDelegate.swift in Sources */,
+				4662DEDB25F6453900520DA5 /* TickersTableViewController.swift in Sources */,
 				4662DEC825F6444900520DA5 /* SceneDelegate.swift in Sources */,
+				4662DEF325F8AD8000520DA5 /* TickerCell.swift in Sources */,
+				4662DEE125F64E9C00520DA5 /* APIClient.swift in Sources */,
+				4641408B25F8E75E00649126 /* TickerHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +403,7 @@
 		};
 		4662DED725F6444C00520DA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B03897123B387DAAB1945B7B /* Pods-TickersPoloniex.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +423,7 @@
 		};
 		4662DED825F6444C00520DA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5AA421A449F10C89CD89652 /* Pods-TickersPoloniex.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
