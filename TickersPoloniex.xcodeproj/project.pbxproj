@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4641408B25F8E75E00649126 /* TickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4641408A25F8E75E00649126 /* TickerHeaderView.swift */; };
+		464140932600DEB000649126 /* TickersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464140922600DEB000649126 /* TickersPresenter.swift */; };
+		464140962600E00300649126 /* TickersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464140952600E00300649126 /* TickersInteractor.swift */; };
 		4662DEC625F6444900520DA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662DEC525F6444900520DA5 /* AppDelegate.swift */; };
 		4662DEC825F6444900520DA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662DEC725F6444900520DA5 /* SceneDelegate.swift */; };
 		4662DECA25F6444900520DA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662DEC925F6444900520DA5 /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		4641408A25F8E75E00649126 /* TickerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerHeaderView.swift; sourceTree = "<group>"; };
+		464140922600DEB000649126 /* TickersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickersPresenter.swift; sourceTree = "<group>"; };
+		464140952600E00300649126 /* TickersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickersInteractor.swift; sourceTree = "<group>"; };
 		4662DEC225F6444900520DA5 /* TickersPoloniex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TickersPoloniex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4662DEC525F6444900520DA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4662DEC725F6444900520DA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,14 +73,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4641408F25FA38CB00649126 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				4662DEDA25F6453900520DA5 /* TickersTableViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		4662DEB925F6444900520DA5 = {
 			isa = PBXGroup;
 			children = (
@@ -98,13 +94,12 @@
 		4662DEC425F6444900520DA5 /* TickersPoloniex */ = {
 			isa = PBXGroup;
 			children = (
-				4662DEC525F6444900520DA5 /* AppDelegate.swift */,
-				4662DEC725F6444900520DA5 /* SceneDelegate.swift */,
+				4676E725260206D200EDAE26 /* Scenes */,
 				4662DEE325F64EA400520DA5 /* Network */,
 				4641408D25FA387900649126 /*  Models */,
-				4641408E25FA38B100649126 /* Views */,
-				4641408F25FA38CB00649126 /* Controllers */,
 				4662DECE25F6444C00520DA5 /* Assets.xcassets */,
+				4662DEC525F6444900520DA5 /* AppDelegate.swift */,
+				4662DEC725F6444900520DA5 /* SceneDelegate.swift */,
 				4662DEC925F6444900520DA5 /* ViewController.swift */,
 				4662DED025F6444C00520DA5 /* LaunchScreen.storyboard */,
 				4662DECB25F6444900520DA5 /* Main.storyboard */,
@@ -119,6 +114,25 @@
 				4662DEE025F64E9C00520DA5 /* APIClient.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		4676E725260206D200EDAE26 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				4676E726260207BA00EDAE26 /* MainTickers */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		4676E726260207BA00EDAE26 /* MainTickers */ = {
+			isa = PBXGroup;
+			children = (
+				464140952600E00300649126 /* TickersInteractor.swift */,
+				464140922600DEB000649126 /* TickersPresenter.swift */,
+				4662DEDA25F6453900520DA5 /* TickersTableViewController.swift */,
+				4641408E25FA38B100649126 /* Views */,
+			);
+			path = MainTickers;
 			sourceTree = "<group>";
 		};
 		CD83F5B7A4DD08B1D58A8FD6 /* Frameworks */ = {
@@ -252,12 +266,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				464140962600E00300649126 /* TickersInteractor.swift in Sources */,
 				4662DEDE25F646A100520DA5 /* Tickers.swift in Sources */,
 				4662DECA25F6444900520DA5 /* ViewController.swift in Sources */,
 				4662DEC625F6444900520DA5 /* AppDelegate.swift in Sources */,
 				4662DEDB25F6453900520DA5 /* TickersTableViewController.swift in Sources */,
 				4662DEC825F6444900520DA5 /* SceneDelegate.swift in Sources */,
 				4662DEF325F8AD8000520DA5 /* TickerCell.swift in Sources */,
+				464140932600DEB000649126 /* TickersPresenter.swift in Sources */,
 				4662DEE125F64E9C00520DA5 /* APIClient.swift in Sources */,
 				4641408B25F8E75E00649126 /* TickerHeaderView.swift in Sources */,
 			);

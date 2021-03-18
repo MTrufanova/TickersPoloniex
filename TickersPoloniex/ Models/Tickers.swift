@@ -21,4 +21,9 @@ struct TickersModel {
     let tickerInfo: Tickers
 }
 
-
+struct TickerViewModel {
+    let pair: String
+    let lastPrice: String
+    let highestBid: String
+    let percent: Float
+}

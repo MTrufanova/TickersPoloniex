@@ -8,11 +8,20 @@
 import UIKit
 import SnapKit
 
+protocol TickersDisplayLogic: class {
+    func display(data: [TickerViewModel])
+    func showError()
+    
+}
+
 final class TickersTableViewController: UITableViewController {
     
-    var tickers = [TickersModel]()
+    //MARK: - Internal var
+    private var interactor: TickersBusinessLogic?
+    private var dataToDisplay = [TickerViewModel]()
     
-    let api: APIClient = APIClientclass()
+ 
+    
     let cellID = "cellID"
     let headerId = "head"
     
@@ -41,8 +50,32 @@ final class TickersTableViewController: UITableViewController {
         return label
     }()
     
+        init() {
+        super.init(nibName: nil, bundle: nil)
+            setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    private func setup()  {
+       let viewController = self
+        let interactor = TickersInteractor()
+        let presenter = TickersPresenter()
+        
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        viewController.interactor = interactor
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        interactor?.fetchTickers()
+        
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Tickers"
@@ -50,17 +83,29 @@ final class TickersTableViewController: UITableViewController {
         tableView.register(TickerCell.self, forCellReuseIdentifier: cellID)
         tableView.register(TickerHeaderView.self, forHeaderFooterViewReuseIdentifier: headerId)
         
-        loadData()
-        updateInfo()
+    
+       // updateInfo()
         setupLayout()
+        tableView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        tableView.tableFooterView = UIView()
+        
     }
     
+    
+    
     //MARK: - Methods
+    
+    
+    
     func setupLayout() {
         
         tableView.addSubview(activityIndicator)
         tableView.addSubview(errorLabel)
         tableView.addSubview(reloadButton)
+        
+        errorLabel.isHidden = true
+        reloadButton.isHidden = true
+        activityIndicator.startAnimating()
         
         activityIndicator.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
@@ -80,55 +125,19 @@ final class TickersTableViewController: UITableViewController {
     }
     
     func updateInfo() {
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loadWithoutIndicator), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loadData), userInfo: nil, repeats: true)
     }
     
-    func loadingData() {
-        activityIndicator.startAnimating()
-        errorLabel.isHidden = true
-        reloadButton.isHidden = true
-        tableView.separatorStyle = .none
-    }
-    func showError() {
-        activityIndicator.stopAnimating()
-        errorLabel.isHidden = false
-        reloadButton.isHidden = false
-    }
-    
-    func showData()  {
-        activityIndicator.stopAnimating()
-        errorLabel.isHidden = true
-        reloadButton.isHidden = true
-        tableView.separatorStyle = .singleLine
-    }
-    
-    @objc func loadWithoutIndicator() {
-        api.fetchData(onResult: { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let ticker):
-                    for (_, _) in ticker {
-                        self.tickers = ticker.map(TickersModel.init).sorted(by: {$0.namePair < $1.namePair})
-                        self.tableView.reloadData()
-                        self.showData()
-                    }
-                    
-                case .failure(_):
-                    self.tickers = []
-                    self.tableView.reloadData()
-                    self.showError()
-                    
-                }
-                
-            }
-        })
-    }
+  
     @objc func loadData() {
-        loadingData()
-        loadWithoutIndicator()
+    
+        interactor?.fetchTickers()
+        tableView.reloadData()
     }
     
-    // MARK: - Table view data source
+ 
+    
+    // MARK: - Table view data source & delegate
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -138,6 +147,11 @@ final class TickersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerId) as? TickerHeaderView {
+            if dataToDisplay.isEmpty {
+            cell.isHidden = true
+            } else {
+                cell.isHidden = false
+            }
             return cell
         }
         return UIView()
@@ -148,8 +162,8 @@ final class TickersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return tickers.count
+       
+        return dataToDisplay.count
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
@@ -158,7 +172,7 @@ final class TickersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? TickerCell {
-            let ticker = tickers[indexPath.row]
+            let ticker = dataToDisplay[indexPath.row]
             cell.refresh(ticker)
             cell.selectionStyle = .none
             
@@ -169,4 +183,28 @@ final class TickersTableViewController: UITableViewController {
         
     }
     
+}
+
+extension TickersTableViewController: TickersDisplayLogic {
+    
+
+    func display(data: [TickerViewModel]) {
+        
+        activityIndicator.stopAnimating()
+        errorLabel.isHidden = true
+        reloadButton.isHidden = true
+        
+        
+        dataToDisplay.append(contentsOf: data)
+        tableView.reloadData()
+    }
+    
+   
+    func showError(){
+        activityIndicator.stopAnimating()
+        errorLabel.isHidden = false
+        reloadButton.isHidden = false
+    }
+    
+  
 }

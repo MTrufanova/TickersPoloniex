@@ -68,13 +68,14 @@ class TickerCell: UITableViewCell {
     
     
     // MARK: - Methods
-    func refresh(_ model:TickersModel) {
-        pairLabel.text = model.namePair.split(separator: "_").joined(separator: "/")
-        highestBidLabel.text = model.tickerInfo.highestBid
-        lastLabel.text = model.tickerInfo.last
-        let percent = Float(model.tickerInfo.percentChange) ?? 0
-        percent >= 0 ? (percentLabel.textColor = .green) : (percentLabel.textColor = .red)
-        percentLabel.text = String(format: "%.2f", (percent * 100)) + "%"
+    func refresh(_ data:TickerViewModel) {
+     
+        pairLabel.text = data.pair
+        highestBidLabel.text = data.highestBid
+        lastLabel.text = data.lastPrice
+        percentLabel.text = String(format: "%.2f", (data.percent * 100)) + "%"
+        data.percent >= 0 ? (percentLabel.textColor = .green) : (percentLabel.textColor = .red)
+        
     }
     
     
