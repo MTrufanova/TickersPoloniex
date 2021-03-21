@@ -27,9 +27,7 @@ class TickersInteractor {
 extension TickersInteractor: TickersBusinessLogic {
     
     func fetchTickers() {
-    
         var tickers = [TickersModel]()
-        
         api.fetchData(onResult: { result in
             DispatchQueue.main.async {
                 switch result {
@@ -39,7 +37,6 @@ extension TickersInteractor: TickersBusinessLogic {
                         self.presenter.presentSuccess(data: tickers)
                     }
                 case .failure(_):
-                   // tickers = []
                     self.presenter.presentFail()
                     
                 }

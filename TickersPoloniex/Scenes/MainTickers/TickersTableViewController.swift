@@ -111,7 +111,6 @@ protocol TickersDisplayLogic: class {
     
   
     @objc func loadData() {
-    
         interactor?.fetchTickers()
         tableView.reloadData()
     }
@@ -120,7 +119,6 @@ protocol TickersDisplayLogic: class {
     // MARK: - Table view data source & delegate
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -142,9 +140,9 @@ protocol TickersDisplayLogic: class {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
         return dataToDisplay.count
     }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
@@ -169,7 +167,7 @@ extension TickersTableViewController: TickersDisplayLogic {
         activityIndicator.stopAnimating()
         errorLabel.isHidden = true
         reloadButton.isHidden = true
-        dataToDisplay.append(contentsOf: data)
+        dataToDisplay =  data
         tableView.reloadData()
     }
     
