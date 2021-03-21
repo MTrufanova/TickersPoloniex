@@ -14,41 +14,36 @@ protocol TickersBusinessLogic {
 
 class TickersInteractor {
     
-    //MARK: - External var
-    var presenter: TickersPresentationLogic?
-   
+    var presenter: TickersPresentationLogic
+    private let api: APIClientclass
     
-    
+    init(presenter: TickersPresentationLogic, api: APIClientclass) {
+        self.presenter = presenter
+        self.api = api
+    }
 }
 
 //MARK: - Business logic
 extension TickersInteractor: TickersBusinessLogic {
     
-   
-    @objc func fetchTickers() {
-       
-        let api = APIClientclass()
+    func fetchTickers() {
+    
         var tickers = [TickersModel]()
         
         api.fetchData(onResult: { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let ticker):
-                    
                     for (_, _) in ticker {
                         tickers = ticker.map(TickersModel.init).sorted(by: {$0.namePair < $1.namePair})
-                        self.presenter?.presentSuccess(data: tickers)
+                        self.presenter.presentSuccess(data: tickers)
                     }
-                    
                 case .failure(_):
                    // tickers = []
-                    self.presenter?.presentFail()
+                    self.presenter.presentFail()
                     
                 }
-               
             }
         })
-        
-    
     }
 }

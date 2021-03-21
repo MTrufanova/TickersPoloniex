@@ -14,12 +14,11 @@ protocol TickersDisplayLogic: class {
     
 }
 
-final class TickersTableViewController: UITableViewController {
+ class TickersTableViewController: UITableViewController {
     
     //MARK: - Internal var
-    private var interactor: TickersBusinessLogic?
+    var interactor: TickersBusinessLogic?
     private var dataToDisplay = [TickerViewModel]()
-    
  
     
     let cellID = "cellID"
@@ -52,30 +51,17 @@ final class TickersTableViewController: UITableViewController {
     
         init() {
         super.init(nibName: nil, bundle: nil)
-            setup()
+           
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    private func setup()  {
-       let viewController = self
-        let interactor = TickersInteractor()
-        let presenter = TickersPresenter()
-        
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        viewController.interactor = interactor
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         interactor?.fetchTickers()
-        
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Tickers"
@@ -83,19 +69,14 @@ final class TickersTableViewController: UITableViewController {
         tableView.register(TickerCell.self, forCellReuseIdentifier: cellID)
         tableView.register(TickerHeaderView.self, forHeaderFooterViewReuseIdentifier: headerId)
         
-    
-       // updateInfo()
+        updateInfo()
         setupLayout()
         tableView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         tableView.tableFooterView = UIView()
-        
     }
     
     
-    
     //MARK: - Methods
-    
-    
     
     func setupLayout() {
         
@@ -135,7 +116,6 @@ final class TickersTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
- 
     
     // MARK: - Table view data source & delegate
     
@@ -178,33 +158,25 @@ final class TickersTableViewController: UITableViewController {
             
             return cell
         }
-        
         return UITableViewCell()
-        
     }
     
 }
 
 extension TickersTableViewController: TickersDisplayLogic {
     
-
     func display(data: [TickerViewModel]) {
-        
         activityIndicator.stopAnimating()
         errorLabel.isHidden = true
         reloadButton.isHidden = true
-        
-        
         dataToDisplay.append(contentsOf: data)
         tableView.reloadData()
     }
     
-   
     func showError(){
         activityIndicator.stopAnimating()
         errorLabel.isHidden = false
         reloadButton.isHidden = false
     }
     
-  
 }

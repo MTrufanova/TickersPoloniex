@@ -4,24 +4,15 @@
 //
 //  Created by msc on 16.03.2021.
 //
-
-
-
 protocol TickersPresentationLogic {
     func presentSuccess(data: [TickersModel])
-    func presentFail() 
-    
-    
+    func presentFail()
 }
 
 class TickersPresenter {
     // MARK: - External var
     weak var viewController: TickersDisplayLogic?
     
-    func load() {
-        
-    }
-   
 }
 
 //MARK: - Presentation logic
@@ -34,20 +25,14 @@ extension TickersPresenter: TickersPresentationLogic {
                 lastPrice: model.tickerInfo.last,
                 highestBid: model.tickerInfo.highestBid,
                 percent: Float(model.tickerInfo.percentChange) ?? 0)
-            
             return cellModel
         }
-        
         viewController?.display(data: viewModel)
         
     }
     
     func presentFail() {
-      
         viewController?.showError()
     }
-    
-   
   
-    
 }
